@@ -266,28 +266,30 @@ narrow policy later.
 ```
 smartgrid-mas/
 ├── README.md
+├── requirements.txt
 ├── docs/                      # one file per required deliverable section
 │   ├── architecture.md        # mermaid diagram + full agent roster
 │   ├── communication_contract.md
 │   ├── coordination.md
-│   ├── incentives.md
 │   ├── emergence.md
-│   ├── interoperability.md
 │   ├── evaluation.md
+│   ├── incentives.md
+│   ├── interoperability.md
+│   ├── marl.md
 │   ├── safety.md
-│   └── marl.md
+│   └── sample_runs.md
+├── logs/ 
+├── scenarios/                 # normal_day, heatwave_peak, failure_rebound, supply_shortfall
 ├── src/
-│   ├── messages.py            # communication contract: envelope, validation, signing
-│   ├── blackboard.py          # shared state
-│   ├── bus.py                 # routing + dead-letter + append-only audit log
-│   ├── llm.py                 # optional LLM hook (deterministic fallback)
 │   ├── agents/                # household, aggregator, grid, storage, market, regulator
 │   ├── market/clearing.py     # congestion price clearing under the cap
 │   ├── safety/guards.py       # PriceGuard, FairnessTracker, HITLGate, stagger
-│   └── sim/                   # scenario loader + runner
-├── scenarios/                 # normal_day, heatwave_peak, failure_rebound, supply_shortfall
-├── tests/test_messages.py
-└── logs/                      # audit_<scenario>.jsonl (gitignored)
+│   ├── sim/                   # scenario loader + runner
+│   ├── blackboard.py          # shared state
+│   ├── bus.py                 # routing + dead-letter + append-only audit log
+│   ├── llm.py                 # optional LLM hook (deterministic fallback)
+│   └── messages.py            # communication contract: envelope, validation, signing
+└── tests/test_messages.py
 ```
 
 ## How this maps to the grading rubric (35 pts)
