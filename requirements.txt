@@ -1,0 +1,4 @@
+# The project runs on the Python 3.10+ standard library with NO required deps.
+# PyYAML is optional: if installed, scenario files are parsed with it; otherwise
+# a tiny built-in parser handles the scenario subset.
+PyYAML>=6.0 ; python_version >= "3.10"

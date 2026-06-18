@@ -1,0 +1,63 @@
+name: heatwave_peak
+description: >
+  Heatwave evening. Solar falls off after 18:00 while AC load peaks and EVs begin
+  charging on arrival home. Feeder 3 approaches transformer capacity. The system
+  must shift flexible load, discharge storage, and stay under the price cap and
+  fairness threshold -- escalating to a human only if physics cannot be satisfied
+  economically.
+slots: 6
+slot_labels: [16h, 17h, 18h, 19h, 20h, 21h]
+feeder_capacity_kw: 230
+target_kw: 180
+price_cap: 0.60
+initial_price: 0.15
+flags:
+  stagger: true
+storage:
+  capacity_kwh: 120
+  power_kw: 40
+  soc: 0.8
+  min_soc: 0.1
+  max_soc: 0.95
+  discharge_price_threshold: 0.30
+households:
+  - name: home_01
+    base_load: [12, 14, 18, 22, 20, 14]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 5
+  - name: home_02
+    base_load: [10, 12, 16, 21, 19, 13]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 5
+  - name: home_03
+    base_load: [11, 13, 17, 20, 18, 12]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 4
+  - name: home_04
+    base_load: [9, 11, 15, 19, 17, 11]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 5
+  - name: home_05
+    base_load: [13, 15, 19, 23, 21, 15]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 4
+  - name: home_06
+    base_load: [10, 12, 16, 20, 18, 12]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 5
+  - name: home_07
+    base_load: [11, 13, 17, 21, 19, 13]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 5
+  - name: home_08
+    base_load: [12, 14, 18, 22, 20, 14]
+    flex_kw: 11
+    flex_slots_needed: 2
+    deadline_slot: 4

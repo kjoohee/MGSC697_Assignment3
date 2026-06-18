@@ -1,0 +1,54 @@
+name: supply_shortfall
+description: >
+  A severe event (heatwave + a generator trip upstream) leaves Feeder 3 with far
+  less capacity than firm demand needs. Even after every household shifts what it
+  can and storage fully discharges, one slot remains physically over the limit
+  with price already pinned to the cap. Economics are exhausted -> the grid
+  escalates, a human authorizes action, and load is shed in FAIRNESS order
+  (a rolling brownout) rather than always cutting the same homes.
+slots: 5
+slot_labels: [17h, 18h, 19h, 20h, 21h]
+feeder_capacity_kw: 150
+target_kw: 110
+price_cap: 0.60
+initial_price: 0.15
+flags:
+  stagger: true
+storage:
+  capacity_kwh: 90
+  power_kw: 40
+  soc: 0.9
+  min_soc: 0.1
+  max_soc: 0.95
+  discharge_price_threshold: 0.30
+households:
+  - name: home_01
+    base_load: [16, 22, 34, 20, 14]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
+  - name: home_02
+    base_load: [15, 21, 33, 19, 13]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
+  - name: home_03
+    base_load: [16, 22, 34, 20, 14]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
+  - name: home_04
+    base_load: [15, 21, 33, 19, 13]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
+  - name: home_05
+    base_load: [16, 22, 34, 20, 14]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
+  - name: home_06
+    base_load: [15, 21, 33, 19, 13]
+    flex_kw: 8
+    flex_slots_needed: 1
+    deadline_slot: 4
