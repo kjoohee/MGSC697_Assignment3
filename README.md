@@ -1,4 +1,4 @@
-# Smart-Grid Coordination — a Multi-Agent System (capstone prototype)
+# A Multi-Agent Smart-Grid Coordination System
 
 A small but credible **multi-agent system (MAS)** that coordinates distributed
 energy resources (homes, batteries, EVs, storage) on a stressed electricity
