@@ -292,36 +292,6 @@ smartgrid-mas/
 └── tests/test_messages.py
 ```
 
-## How this maps to the grading rubric (35 pts)
-
-| Category | Where to look |
-|---|---|
-| Use-case quality & stakeholder framing (4) | §1, `docs/safety.md` |
-| Agent role design & boundaries (5) | §3, `docs/architecture.md` (permissions, grid/market split) |
-| Communication protocol & architecture (5) | §4–5, `src/messages.py`, `src/bus.py`, tests |
-| Coordination & incentive design (6) | §6–7, `docs/coordination.md`, `docs/incentives.md` |
-| Prototype / simulation / worked scenario (5) | the 4 runnable scenarios + traces |
-| Evaluation, observability & safety (6) | §10–11, `docs/evaluation.md`, `docs/safety.md`, audit log, HITL gate |
-| Presentation & clarity (4) | this README + per-section docs |
-
-## Push this to your repo
-
-I built this for you; pushing is your step (I don't have write access). From the
-folder you downloaded:
-
-```bash
-cd smartgrid-mas
-git init
-git add .
-git commit -m "Smart-grid multi-agent system capstone prototype"
-git branch -M main
-git remote add origin https://github.com/<you>/<your-repo>.git
-git push -u origin main
-```
-
-If the repo already has commits, `git pull --rebase origin main` first, or copy
-these files in alongside the existing ones.
-
 ## Team contribution statement
 
 _(Fill in — a few honest lines each.)_
