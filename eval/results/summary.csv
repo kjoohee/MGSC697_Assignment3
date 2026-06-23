@@ -1,0 +1,7 @@
+run,baseline_peak,coordinated_peak,peak_reduction,slots_over_capacity,price_oscillation,escalations,total_curtailed,gini,fairness_breach,human_calls,human_approved,comfort_ok,total_homes,correlation_id
+normal_day,115.0,87.0,0.24347826086956523,0,0.0,0,0.0,0.0,False,0,0,6,6,4bdf6007-4390-46fd-94fb-0d832515ff19
+heatwave_peak,256.0,176.0,0.3125,0,0.0,0,0.0,0.0,False,0,0,8,8,96f09848-d726-429b-9ed9-21728fc5c33e
+supply_shortfall,249.0,161,0.3534136546184739,1,0.12,1,11.0,0.0,False,1,1,6,6,889f7e70-44c3-488c-9dc7-bc27134149da
+failure_rebound,256.0,224.0,0.125,0,0.03639999999999999,0,0.0,0.0,False,0,0,8,8,ddec7974-3443-4954-a3a0-155fcc4511af
+heatwave +inject rebound,256.0,224.0,0.125,0,0.03639999999999999,0,0.0,0.0,False,0,0,8,8,da59f4cb-1734-4dc9-8f3b-aad76fab2cba
+supply_shortfall --no-human,249.0,161,0.3534136546184739,1,0.12,1,0.0,0.0,False,1,0,6,6,dff7b9a0-0d8c-402e-ac6e-52a6e907412c

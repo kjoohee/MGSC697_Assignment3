@@ -248,6 +248,28 @@ narrow policy later.
 
 ---
 
+## Verification & evidence
+
+The safety and coordination claims above are backed by an executable test suite
+and a reproducible evaluation harness — not just prose.
+
+- **Safety / mechanism tests** (`tests/`): each guard's promise is a test —
+  `test_hitl_gate.py` (irreversible actions require a human; `--no-human` blocks
+  them), `test_fairness.py` (curtailment Gini + least-curtailed-first rotation),
+  `test_priceguard.py` (ramp/hysteresis damping, no limit cycle),
+  `test_market_clearing.py` (price pins at the cap — the escalation trigger),
+  `test_rebound.py` (staggering spreads load instead of piling it up). Run:
+  `python -m unittest -q`.
+- **Evaluation harness** (`eval/run_all.py`): runs every scenario plus the
+  injected rebound failure and the no-human safety path, writing the
+  agent / interaction / system / human metrics to
+  [`eval/results/summary.md`](eval/results/summary.md) (and `summary.csv`).
+- **Failure vs. mitigation** (`eval/compare_rebound.py`): runs the heatwave with
+  the rebound mitigation OFF vs ON side by side — the §9 rebound peak shown
+  failing and then fixed.
+
+---
+
 ## What is mocked vs. real
 
 | Real (genuinely implemented) | Mocked / simplified |
@@ -295,5 +317,9 @@ smartgrid-mas/
 ## Team contribution statement
 
 - **Joohee Kim** — …
-- **Chloe Pham** — …
+- **Chloe Pham** — Verification & evidence. Built the safety/mechanism test suite
+  (`tests/`) turning the README's safety claims into executable guarantees (HITL
+  gate, fairness/Gini, PriceGuard, market-clearing escalation trigger, rebound
+  mitigation), and the evaluation harness (`eval/`) producing the cross-scenario
+  results table and the rebound failure-vs-mitigation comparison.
 - **Yan-ling Lu** — …

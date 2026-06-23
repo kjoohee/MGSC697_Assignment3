@@ -216,9 +216,20 @@ def run(scenario_path: str, inject: str | None, use_llm: bool, no_human: bool,
             print(f"      curtail {name}: -{shed:.0f} kW ({kind}, fairness-ordered)")
 
     # --- metrics -----------------------------------------------------------
-    print_metrics(sc, baseline, coordinated, households, storage, grid, regulator,
-                  market, bus, fairness, curtailed_total, correlation_id, audit)
+    metrics = print_metrics(sc, baseline, coordinated, households, storage, grid,
+                            regulator, market, bus, fairness, curtailed_total,
+                            correlation_id, audit)
     audit.close()
+
+    # Run context + metrics, returned for the evaluation harness (eval/).
+    metrics.update({
+        "scenario": sc.name,
+        "stagger": stagger,
+        "use_llm": use_llm,
+        "human_available": not no_human,
+        "inject": inject or "",
+    })
+    return metrics
 
 
 def print_profile(sc, profile):
@@ -296,6 +307,36 @@ def print_metrics(sc, baseline, coordinated, households, storage, grid, regulato
         print(f"    [{r['event']}] {m['sender']} -> {m['recipient']} : "
               f"{m['msg_type']} {m['payload']}")
     print(hr())
+
+    # Same numbers the block above printed, returned as data so an evaluation
+    # harness can collect them across runs without parsing stdout.
+    return {
+        # agent
+        "comfort_ok": comfort_ok,
+        "total_homes": len(households),
+        "storage_soc": storage.soc,
+        "storage_cycles": len(storage.dispatch_log),
+        # interaction
+        "messages_delivered": bus.delivered,
+        "dead_letter": len(bus.dead_letter),
+        "price_oscillation": price_oscillation(market),
+        "escalations": len(grid.escalations),
+        # system
+        "baseline_peak": peak_base,
+        "coordinated_peak": peak_coord,
+        "peak_reduction": reduction,
+        "slots_over_capacity": sum(1 for v in coordinated if v > sc.feeder_capacity_kw),
+        "total_curtailed": curtailed_total,
+        "gini": gini,
+        "fairness_breach": bool(breach),
+        # human
+        "human_calls": len(human_calls),
+        "human_approved": len(approved),
+        "regulator_overrides": len(regulator.overrides),
+        # trace
+        "correlation_id": correlation_id,
+        "audit_events": len(recs),
+    }
 
 
 def main():
