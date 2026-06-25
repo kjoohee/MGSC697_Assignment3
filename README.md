@@ -322,4 +322,9 @@ smartgrid-mas/
   gate, fairness/Gini, PriceGuard, market-clearing escalation trigger, rebound
   mitigation), and the evaluation harness (`eval/`) producing the cross-scenario
   results table and the rebound failure-vs-mitigation comparison.
-- **Yan-ling Lu** — …
+- **Yan-ling Lu** — Verification evidence & observability. Replaced abbreviated
+  placeholders in `docs/sample_runs.md` with full verbatim console output from
+  all four scenarios, added a sample audit log entry section annotating the JSONL
+  message schema (correlation_id, signature, trust_domain), and committed
+  `logs/audit_heatwave_peak.jsonl` and `logs/audit_supply_shortfall.jsonl` as
+  concrete proof-of-run artifacts. Updated `.gitignore` to track log files.
