@@ -316,7 +316,7 @@ smartgrid-mas/
 
 ## Team contribution statement
 
-- **Joohee Kim** — …
+- **Joohee Kim** — System design & core implementation. Owned the use-case and stakeholder framing, the multi-agent architecture and agent boundaries (incl. the Grid/Market split), the hybrid coordination mechanism, the message contract and simulation runner (src/, scenarios/), and the design docs (docs/).
 - **Chloe Pham** — Verification & evidence. Built the safety/mechanism test suite
   (`tests/`) turning the README's safety claims into executable guarantees (HITL
   gate, fairness/Gini, PriceGuard, market-clearing escalation trigger, rebound
